@@ -1,0 +1,319 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+:root {
+    --mainColor: #ffffff; /* White text for contrast */
+    --mainLightColor: rgba(255, 255, 255, 0.8); /* Softer white */
+    --mainDimColor: rgb(180, 180, 180); /* Light gray for secondary text */
+    --cardBackground: linear-gradient(145deg, #3a6ea5, #4a8fd4); /* Blue gradient for the music container */
+    --shadowLight: #5a9de6; /* Light shadow for Neumorphic effect */
+    --shadowDark: #2a5b85; /* Dark shadow for Neumorphic effect */
+    --accentColor: #4caf50; /* Accent color for buttons and highlights */
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+/* Gradient Background for the Container */
+.container {
+    min-height: 100vh;
+    min-width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--mainColor);
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #1e3c72, #2a5298); /* Blue gradient background */
+    box-sizing: border-box;
+}
+
+/* Remove the background video */
+.backgroundVideo {
+    display: none;
+}
+
+/* Black Screen Overlay (Optional for Neumorphic Effect) */
+.blackScreen {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    pointer-events: none;
+    background-color: rgba(0, 0, 0, 0.2); /* Softer overlay */
+    z-index: -1;
+}
+
+/* Neumorphic Container */
+.music-Container {
+    width: 350px;
+    padding: 35px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-radius: 36px;
+    background: var(--cardBackground);
+    box-shadow: 8px 8px 15px var(--shadowDark), -8px -8px 15px var(--shadowLight);
+    font-weight: 600;
+}
+
+/* Music Player Title */
+.musicPlayer {
+    margin: 0;
+    margin-bottom: 10px;
+    color: var(--mainLightColor);
+}
+
+/* Song Name */
+.music-Head-Name {
+    margin: 0 auto;
+    font-size: 1.5rem;
+    text-align: center;
+    color: var(--mainColor);
+}
+
+/* Artist Name */
+.music-Artist-Name {
+    color: var(--mainDimColor);
+    margin: 4px 0;
+    font-size: 1.2rem;
+    font-weight: 400;
+}
+
+/* Neumorphic Avatar */
+#songAvatar {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin: 18px 0;
+    background: var(--cardBackground);
+    box-shadow: 8px 8px 15px var(--shadowDark), -8px -8px 15px var(--shadowLight);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#songAvatar:hover {
+    box-shadow: inset 8px 8px 15px var(--shadowDark), inset -8px -8px 15px var(--shadowLight);
+}
+
+/* Timer Section */
+.musicTimerDiv {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    font-weight: 600;
+    color: var(--mainColor);
+}
+
+/* Neumorphic Progress Bar */
+.musicProgressBar {
+    width: 100%;
+    height: 12px;
+    border-radius: 6px;
+    background: var(--cardBackground);
+    box-shadow: inset 8px 8px 15px var(--shadowDark), inset -8px -8px 15px var(--shadowLight);
+    outline: none;
+    appearance: none;
+    margin-bottom: 16px;
+}
+
+.musicProgressBar::-webkit-slider-thumb {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--accentColor);
+    cursor: pointer;
+    box-shadow: 8px 8px 15px #3e8e41, -8px -8px 15px #5fd960;
+}
+
+.musicProgressBar::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--accentColor);
+    cursor: pointer;
+    box-shadow: 8px 8px 15px #3e8e41, -8px -8px 15px #5fd960;
+}
+
+/* Neumorphic Buttons */
+.musicControler, .playBtn, .loopBtn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--cardBackground);
+    box-shadow: 8px 8px 15px var(--shadowDark), -8px -8px 15px var(--shadowLight);
+    color: var(--mainColor);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 24px;
+    margin: 10px;
+}
+
+.musicControler:hover, .playBtn:hover, .loopBtn:hover {
+    box-shadow: inset 8px 8px 15px var(--shadowDark), inset -8px -8px 15px var(--shadowLight);
+    color: var(--mainDimColor);
+}
+
+.loopBtn.active {
+    background: var(--accentColor);
+    color: white;
+    box-shadow: 8px 8px 15px #3e8e41, -8px -8px 15px #5fd960;
+}
+
+.loopBtn.active:hover {
+    box-shadow: inset 8px 8px 15px #3e8e41, inset -8px -8px 15px #5fd960;
+}
+
+/* Neumorphic Change Background Button */
+.changeBackBtn {
+    width: 200px;
+    height: 30px;
+    background: var(--cardBackground);
+    border-radius: 15px;
+    box-shadow: 8px 8px 15px var(--shadowDark), -8px -8px 15px var(--shadowLight);
+    color: var(--mainColor);
+    cursor: pointer;
+    text-align: center;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    padding: 5px 0;
+    position: relative; /* Default position */
+    top: 0;
+}
+
+.changeBackBtn:hover {
+    box-shadow: inset 8px 8px 15px var(--shadowDark), inset -8px -8px 15px var(--shadowLight);
+    color: var(--mainDimColor);
+}
+
+.objectFitCover {
+    object-fit: cover;
+}
+
+.objectFitContain {
+    object-fit: contain;
+}
+
+/* Myicon (YouTube Subs Section) */
+.youtube-Subs {
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    text-decoration: none;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.youtube-Subs img {
+    height: 24px;
+}
+
+.youtube-Subs p {
+    font-family: 'Poppins';
+    margin: 0;
+    padding: 0;
+    margin-left: 10px;
+    font-size: 18px;
+}
+
+/* Responsive Design for Small Devices */
+@media (max-width: 768px) {
+    /* Center the container and adjust spacing */
+    .container {
+        flex-direction: column;
+        justify-content:space-evenly;
+        padding: 20px;
+    }
+
+    /* Change Background Button */
+    .changeBackBtn {
+        padding-top: 10px;
+        position: relative;
+        top: 0;
+        left: 0;
+        transform: none;
+        margin: 10px auto;
+        width: 90%; /* Full width with padding */
+        height: 40px;
+        font-size: 14px;
+    }
+
+    /* Myicon Section */
+    .youtube-Subs {
+        position: relative;
+        top: 0;
+        left: 0;
+        transform: none;
+        margin: 10px auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 90%; /* Full width with padding */
+    }
+
+    .youtube-Subs img {
+        height: 30px;
+        width: 30px;
+    }
+
+    .youtube-Subs p {
+        font-size: 14px;
+        margin-left: 8px;
+    }
+
+    /* Music Container */
+    .music-Container {
+        width: 100%; /* Full width */
+        padding: 20px;
+        margin-top: 20px;
+        box-sizing: border-box;
+    }
+
+    /* Music Player Title */
+    .musicPlayer {
+        font-size: 1.2rem;
+    }
+
+    /* Song Name */
+    .music-Head-Name {
+        font-size: 1.2rem;
+    }
+
+    /* Artist Name */
+    .music-Artist-Name {
+        font-size: 1rem;
+    }
+
+    /* Neumorphic Avatar */
+    #songAvatar {
+        width: 150px;
+        height: 150px;
+    }
+
+    /* Music Progress Bar */
+    .musicProgressBar {
+        height: 10px;
+    }
+
+    /* Music Controllers */
+    .musicControlers {
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+    }
+
+    .musicControler, .playBtn, .loopBtn {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+    }
+}
